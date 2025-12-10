@@ -10,7 +10,8 @@
     private string $title = "";
     private string $content = "";
     private ?DateTime $dateCreation = null;
-    private ?DateTime $dateUpdate = null;  
+    private ?DateTime $dateUpdate = null;
+    private int $viewsNumber;
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -127,4 +128,26 @@
     {
         return $this->dateUpdate;
     }
+
+    /**
+     * Getter pour le nombre de vues.
+     * Grâce au setter, on a la garantie de récupérer un objet int.
+     * @return int
+     */
+    public function getViewsNumber() : int 
+    {
+        return $this->viewsNumber;
+    }
+
+    /**
+     * Setter pour le nombre de vues. 
+     * @param int $viewsNumber
+     */
+    public function setViewsNumber(int $viewsNumber) : void 
+    {
+        if ($viewsNumber >= 0) {
+            $this->viewsNumber = $viewsNumber;
+        }
+    }
+
  }

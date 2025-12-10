@@ -26,6 +26,26 @@ class AdminController {
     }
 
     /**
+     * Affiche la page de statistiques des articles.
+     * @return void
+     */
+    public function showArticlesStats() : void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        $this->checkIfUserIsConnected();
+
+        // On récupère les articles.
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticlesWithStats();
+
+        // On affiche la page d'administration.
+        $view = new View("Administration");
+        $view->render("articleDashboard", [
+            'articles' => $articles
+        ]);
+    }
+
+    /**
      * Vérifie que l'utilisateur est connecté.
      * @return void
      */

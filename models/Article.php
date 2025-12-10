@@ -12,6 +12,7 @@
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null;
     private int $viewsNumber;
+    private int $commentsNumber;
 
     /**
      * Setter pour l'id de l'utilisateur. 
@@ -147,6 +148,27 @@
     {
         if ($viewsNumber >= 0) {
             $this->viewsNumber = $viewsNumber;
+        }
+    }
+
+    /**
+     * Getter pour le nombre de commentaires.
+     * Grâce au setter, on a la garantie de récupérer un objet int.
+     * @return int
+     */
+    public function getCommentsNumber() : int 
+    {
+        return $this->commentsNumber;
+    }
+
+    /**
+     * Setter pour le nombre de commentares. 
+     * @param int $viewsNumber
+     */
+    public function setcommentsNumber(int $commentsNumber) : void 
+    {
+        if($commentsNumber >= 0) {
+            $this->commentsNumber = $commentsNumber;
         }
     }
 

@@ -9,11 +9,12 @@
 
 <div class="adminArticle">
         <div class="articleLine">
-            <div class="title">Titre</div>
-            <div class="title">Nombre de vues</div>
-            <div class="title">Nombre de commentaires</div>
-            <div class="title">Date de création</div>
+            <div class="title">Titre <a href="index.php?action=showArticlesStats&column=title&way=0"><font size = '5'>&darr;</font></a> <a href="index.php?action=showArticlesStats&column=title&way=1"><font size = '5'>&uarr;</font></a></div>
+            <div class="title">Nombre de vues <a href="index.php?action=showArticlesStats&column=viewsNumber&way=0"><font size = '5'>&darr;</font></a> <a href="index.php?action=showArticlesStats&column=viewsNumber&way=1"><font size = '5'>&uarr;</font></a></div>
+            <div class="title">Nombre de commentaires <a href="index.php?action=showArticlesStats&column=commentsNumber&way=0"><font size = '5'>&darr;</font></a> <a href="index.php?action=showArticlesStats&column=commentsNumber&way=1"><font size = '5'>&uarr;</font></a></div>
+            <div class="title">Date de création <a href="index.php?action=showArticlesStats&column=dateCreation&way=0"><font size = '5'>&darr;</font></a> <a href="index.php?action=showArticlesStats&column=dateCreation&way=1"><font size = '5'>&uarr;</font></a></div>
         </div>
+
     <?php foreach ($articles as $article) { ?>
         <div class="articleLine">
             <div class="title"><?= $article->getTitle() ?></div>

@@ -31,12 +31,15 @@ class AdminController {
      */
     public function showArticlesStats() : void
     {
+        $column = Utils::request("column");
+        $way = Utils::request("way");
+
         // On vérifie que l'utilisateur est connecté.
         $this->checkIfUserIsConnected();
 
         // On récupère les articles.
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticlesWithStats();
+        $articles = $articleManager->getAllArticlesWithStats($column, $way);
 
         // On affiche la page d'administration.
         $view = new View("Administration");

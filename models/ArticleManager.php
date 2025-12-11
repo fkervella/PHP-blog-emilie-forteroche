@@ -108,9 +108,46 @@ class ArticleManager extends AbstractEntityManager
      * Récupère tous les articles avec les statistiques articles associées.
      * @return array : un tableau d'objets Article.
      */
-    public function getAllArticlesWithStats() : array
+    public function getAllArticlesWithStats(?string $column, ?string $way) : array
     {
-        $sql = "SELECT article.id as 'id', article.title as 'title', article.content as 'content', article.date_creation as 'date_creation', article.date_update as 'date_update', article.views_number as 'views_number', count(comment.id) as 'comments_number' FROM `article` LEFT JOIN comment ON article.id = comment.id_article GROUP BY article.id;";
+        switch($column) {
+            case 'title':
+                $columnName = "article.title";
+                break;
+            
+            case 'dateCreation':
+                $columnName = "article.date_creation";
+                break;
+            
+            case 'viewsNumber':
+                $columnName = "article.views_number";
+                break;
+            
+            case 'commentsNumber':
+                $columnName = "comments_number";
+                break;
+            
+            default:
+                $columnName = 'comments_number';
+                break;
+        }
+
+        switch($way) {
+            case '1':
+                $wayName = "ASC";
+                break;
+
+            case '0':
+                $wayName = "DESC";
+                break;
+
+            default:
+                $wayName = "ASC";
+                break;
+
+        }
+
+        $sql = "SELECT article.id as 'id', article.title as 'title', article.date_creation as 'date_creation', article.views_number as 'views_number', count(comment.id) as 'comments_number' FROM article LEFT JOIN comment ON article.id = comment.id_article GROUP BY article.id ORDER BY $columnName $wayName";
         $result = $this->db->query($sql);
         $articles = [];
 
@@ -118,10 +155,5 @@ class ArticleManager extends AbstractEntityManager
             $articles[] = new Article($article);
         }
         return $articles;
-    }
-
-
-
-
-    
+    }    
 }

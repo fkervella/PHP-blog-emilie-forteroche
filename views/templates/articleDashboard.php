@@ -17,7 +17,7 @@
 
     <?php foreach ($articles as $article) { ?>
         <div class="articleLine">
-            <div class="title"><?= $article->getTitle() ?></div>
+            <div class="title"><a href="index.php?action=showArticle&id=<?= $article->getId() ?>"><?= $article->getTitle() ?></a></div>
             <div class="title"><?= $article->getViewsNumber() ?></div>
             <div class="title"><?= $article->getCommentsNumber() ?></div>
             <div class="title"><?= Utils::convertDateToFrenchFormat($article->getDateCreation()) ?></div>

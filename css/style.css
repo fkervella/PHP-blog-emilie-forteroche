@@ -317,7 +317,16 @@ a.info {
     display: flex; 
 }
 
+.articleBlankLine {
+    display: flex; 
+}
+
 .articleLine div {
+    display: flex;
+    align-items: center;
+}
+
+.articleBlankLine div {
     display: flex;
     align-items: center;
 }
@@ -332,9 +341,26 @@ a.info {
     flex-grow: 1;
 }
 
+.articleBlankLine .title {
+    font-weight: bold;
+    min-width: 200px;
+    width: 200px;
+    background-color: var(--quoteColor);
+}
+
+.articleBlankLine .content {
+    flex-grow: 1;
+    background-color: var(--quoteColor);
+}
+
 .articleLine > div {
     padding: 20px;
     border: 1px solid var(--backgroundColor);
+}
+
+.articleBlankLine > div {
+    padding: 20px;
+    border: 1px solid var(--quoteColor);
 }
 
 /** 

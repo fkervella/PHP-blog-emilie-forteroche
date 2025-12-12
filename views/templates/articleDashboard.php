@@ -15,8 +15,16 @@
             <div class="title">Date de création <a href="index.php?action=showArticlesStats&column=dateCreation&way=0"><font size = '5'>&darr;</font></a> <a href="index.php?action=showArticlesStats&column=dateCreation&way=1"><font size = '5'>&uarr;</font></a></div>
         </div>
 
+    <?php $coloredLine = 0; ?>
     <?php foreach ($articles as $article) { ?>
-        <div class="articleLine">
+        <?php if($coloredLine === 1 ) {
+            echo '<div class="articleLine">';
+            $coloredLine = 0;
+         } else {
+            echo '<div class="articleBlankLine">';
+            $coloredLine = 1;
+        }
+        ?>
             <div class="title"><a href="index.php?action=showArticle&id=<?= $article->getId() ?>"><?= $article->getTitle() ?></a></div>
             <div class="title"><?= $article->getViewsNumber() ?></div>
             <div class="title"><?= $article->getCommentsNumber() ?></div>
